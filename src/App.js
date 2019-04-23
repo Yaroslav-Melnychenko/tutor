@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Header from './components/Header/Header';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TutorList from './components/TutorsList/TutorsList';
+import Filter from './components/Filter';
 import './App.scss';
 
 const styles = theme => ({
@@ -31,10 +31,10 @@ class App extends Component {
           }}
         >
           <Grid container spacing={24}>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>Filter</Paper>
+            <Grid item xs={3}>
+              <Filter />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={9}>
               <TutorList />
             </Grid>
           </Grid>

@@ -4,6 +4,9 @@
   -webkit-box-shadow: 0 5px 9px rgba(0,0,0,.15);
   box-shadow: 0 5px 9px rgba(0,0,0,.15);
   position: relative;
+  margin-bottom: 25px;
+  color: #3d4454;
+  overflow: hidden;
   z-index: 1;
 }
 
@@ -13,4 +16,90 @@
   display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #a9b3cb;
+  .tutors-pic {
+    min-width: 160px;
+    min-height: 160px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 30px;
+    img{
+      min-width: 160px;
+      min-height: 160px;
+      object-fit: cover;
+    }
+  }
+  .tutor-first-row {
+    .tutor-name {
+      margin-top: 0;
+      margin-bottom: 10px;
+      a {
+        color: #3d4454;
+        text-decoration: none;
+      }
+    }
+    .subject-name {
+      color: #a9b3cb;
+    }
+    .tutors-teacher__info {
+      margin-top: 8px;
+      font-size: 14px;
+      .info-list {
+        font-weight: 500;
+      }
+    }
+  }
+  .tutor-second-row {
+    width: 280px;
+    .tutors-teacher__more {
+      font-size: 14px;
+      line-height: 1.43;
+      max-height: 80px;
+      overflow-y: hidden;
+      margin-bottom: 25px;
+      color: #a9b3cb;
+    }
+    .view-more {
+      font-size: 13px;
+      color: #3d4454;
+      font-weight: 600;
+    }
+  }
+}
+
+.add-info {
+  padding: 14px 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f5f5f5;
+  .raiting-stars {
+    text-align: center;
+    width: 160px;
+    margin-right: 30px;
+    .review-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f9650c;
+      display: inline-block;
+    }
+    .reactstars {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 7px;
+    }
+  }
+  .payment {
+    font-size: 24px;
+    font-weight: 600;
+    align-self: center;
+    .currency {
+      font-size: 13px;
+    }
+  }
+  .subscribe {
+    display: flex;
+    margin-left: auto;
+  }
 }

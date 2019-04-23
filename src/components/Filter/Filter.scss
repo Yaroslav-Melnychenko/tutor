@@ -1,0 +1,27 @@
+.filter-container {
+  width: 100%;
+  padding: 23px 15px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.15);
+  position: relative; 
+  color: #3d4454;
+  box-sizing: border-box;
+  .label {
+    height: 30px;
+  }
+  .title {
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  .filter-item {
+    border-bottom: solid 1px #e4e4e4;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+  }
+  .filter-item:last-child{
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+}
