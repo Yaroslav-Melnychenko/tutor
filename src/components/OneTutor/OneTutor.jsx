@@ -2,6 +2,7 @@ import React from 'react';
 import ReactStars from 'react-stars';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 import './OneTutor.scss';
 
 const styles = theme => ({
@@ -15,17 +16,17 @@ const styles = theme => ({
 
 const OneTutor = (props) => {
 
-  const { classes, firstName, lastName, photo, subjects, levels, languages, price, score } = props;
+  const { classes, firstName, lastName, photo, subjects, levels, languages, price, score, _id } = props;
 
   return(
     <div className='tutorContainer'>
       <div className='main-info'>
-        <a href="#link" className="tutors-pic">
+        <Link to={'/tutor/' + _id} className="tutors-pic">
           <img src={photo} alt="" />
-        </a>
+        </Link>
         <div className='tutor-first-row'>
           <h3 className="tutor-name">
-            <a href="#link">{firstName} {lastName}</a>
+            <Link to={'/tutor/' + _id}>{firstName} {lastName}</Link>
           </h3>
           <div className="tutors-teacher__info">
             <span className="subject-name">Предмет:</span> <span className="info-list">{subjects.join(', ')}</span>
