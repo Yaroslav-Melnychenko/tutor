@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './TutorPage.scss';
 
 const TutorPage = (props) => {
 
@@ -12,7 +13,9 @@ const TutorPage = (props) => {
   }, [])
 
   return(
-    <div>TutorPage</div>
+    <div className="page-container">
+      {id}
+    </div>
   )
 }
 export default TutorPage;

@@ -1,22 +1,11 @@
 import React from 'react';
 import ReactStars from 'react-stars';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
 import './OneTutor.scss';
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
-  input: {
-    display: 'none',
-  },
-});
-
 const OneTutor = (props) => {
 
-  const { classes, firstName, lastName, photo, subjects, levels, languages, price, score, _id } = props;
+  const { firstName, lastName, photo, subjects, levels, languages, price, score, _id } = props;
 
   return(
     <div className='tutorContainer'>
@@ -60,10 +49,10 @@ const OneTutor = (props) => {
         </div>
         <div className="payment">{price} <span className="currency">грн/год</span></div>
         <div className="subscribe">
-          <Button variant="contained" color="primary" className={classes.button}>Записатись</Button>
+          <Link to={'/tutor/' + _id} className="btn">Записатись</Link>
         </div>
       </div>
     </div>
   );
 }
-export default withStyles(styles)(OneTutor);
+export default OneTutor;
