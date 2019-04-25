@@ -1,4 +1,40 @@
 .page-container {
-    max-width: 1180px; 
+    max-width: 1140px; 
     margin: 35px auto;
+}
+
+.info-container{
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.15);
+    position: relative;
+    margin-bottom: 25px;
+    color: #3d4454;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.withpadding {
+    padding: 25px;
+}
+
+.description{
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.border-none {
+    border: none;
+}
+
+.sidebar-item {
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.15);
+    position: relative;
+    margin-bottom: 25px;
+    color: #3d4454;
+    overflow: hidden;
+    z-index: 1;
 }

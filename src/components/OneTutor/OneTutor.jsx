@@ -5,7 +5,7 @@ import './OneTutor.scss';
 
 const OneTutor = (props) => {
 
-  const { firstName, lastName, photo, subjects, levels, languages, price, score, _id } = props;
+  const { _id, firstName, lastName, photo, subjects, levels, languages, price, score, description } = props;
 
   return(
     <div className='tutorContainer'>
@@ -29,10 +29,8 @@ const OneTutor = (props) => {
         </div>
         <div className="tutor-second-row">
           <div className="about-title">Про себе</div>
-          <p className="tutors-teacher__more">
-            Магістр освіти, переможець математичних олімпіад та конкурсів. Досвід роботи у інтернаціональній школі SABIS ®. Компетенція у підготовці учнів до вступу у 
-          </p>
-          <a href="#link" className="view-more">Переглянути детальныше</a>
+          <p className="tutors-teacher__more">{description[0]}</p>
+          <Link to={'/tutor/' + _id} className="view-more">Переглянути детальныше</Link>
         </div>
       </div>
       <div className='add-info'>
