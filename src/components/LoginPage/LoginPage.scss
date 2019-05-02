@@ -1,0 +1,72 @@
+.login-container {
+  color: #3d4454;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-page {
+  text-align: center;
+  padding: 45px;
+  background-color: #fff;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  // width: 600px;
+}
+
+.input-field{
+  width: 100%;
+}
+
+.social-login-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.auth-link {
+  width: 40%;
+  border-radius: 5px;
+  padding: 15px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+}
+
+.auth-link:hover{
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.gmail {
+  background-color: #dc4e41;
+}
+
+.facebook {
+  background-color: #4C69BA;
+}
+
+.button-container {
+  text-align: left;
+  margin-top: 15px;
+}
