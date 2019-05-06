@@ -1,11 +1,18 @@
 import React from 'react';
-import { withFormik } from 'formik';
+// import { withFormik } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import { FaGoogle, FaFacebookF } from 'react-icons/fa';
 import Button from '@material-ui/core/Button';
 import './LoginPage.scss';
 
-const NewTutorPage = () => {
+const NewTutorPage = (props) => {
+  
+  const { logIn } = props;
+
+  const submitForm = () => {
+    logIn();
+  }
+
   return(
     <div className="login-container">
       <div className="login-page">
@@ -32,11 +39,11 @@ const NewTutorPage = () => {
             variant="outlined"
           />
           <div className="button-container">
-            <Button variant="outlined" color="primary">Вхід</Button>
+            <Button onClick={submitForm} variant="outlined" color="primary">Вхід</Button>
           </div>
         </form>
       </div>
     </div>
   )
 }
-export default withFormik({})(NewTutorPage);
+export default NewTutorPage;
