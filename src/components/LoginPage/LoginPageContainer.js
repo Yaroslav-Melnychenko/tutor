@@ -1,20 +1,18 @@
 import { connect } from 'react-redux';
-// import { fetchCurrencies, fetchCurrenciesByDate } from 'Store/currencies/actions';
 import { logIn } from '../../store/auth/actions';
 import LoginPage from './LoginPage';
 
-// const mapStateToProps = () => {
-//   return {
-//     p: [1, 2, 3]
-//   };
-// };
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = () => {
   return {
-    logIn: () => dispatch(logIn())
-    // fetchData: () => dispatch(fetchCurrencies()),
-    // fetchDataByDate: (date) => dispatch(fetchCurrenciesByDate(date))
+    email: '',
+    password: ''
   };
 };
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logIn: (email, password) => dispatch(logIn(email, password))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
