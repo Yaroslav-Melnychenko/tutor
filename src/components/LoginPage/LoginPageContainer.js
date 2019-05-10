@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
-import { logIn } from '../../store/auth/actions';
+// import { logIn } from '../../store/auth/actions';
 import LoginPage from './LoginPage';
 
 const mapStateToProps = () => {
   return {
-    email: '',
-    password: ''
+    userData: {email: '', password: ''}
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logIn: (email, password) => dispatch(logIn(email, password))
+    logInSuccess: (userData) => dispatch({
+      type: 'LOGIN_SUCCESS',
+      userData
+    })
   };
 };
 

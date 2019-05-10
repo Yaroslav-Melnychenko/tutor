@@ -1,8 +1,7 @@
-const LOGIN_SUCCESS = (email, password) => {
+const LOGIN_SUCCESS = (userData) => {
   return {
     type: 'LOGIN_SUCCESS',
-    email: email,
-    password: password
+    userData
   }
 }
 

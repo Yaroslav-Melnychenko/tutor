@@ -16,6 +16,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .login-page {
@@ -24,7 +25,7 @@
   background-color: #fff;
   box-shadow: 0 5px 9px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
-  // width: 600px;
+  width: 450px;
 }
 
 .input-field{
@@ -69,4 +70,9 @@
 .button-container {
   text-align: left;
   margin-top: 15px;
+}
+
+.input-error {
+  color: #f50057;
+  border-color: #f50057;
 }

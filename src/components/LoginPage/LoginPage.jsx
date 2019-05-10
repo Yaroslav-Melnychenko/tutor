@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { FaGoogle, FaFacebookF } from 'react-icons/fa';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 import './LoginPage.scss';
 
 class NewTutorPage extends Component {
@@ -10,20 +11,24 @@ class NewTutorPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: props.email,
-      password: props.password
+      email: props.userData.email,
+      password: props.userData.password,
     }
   }
 
   submitForm = () => {
-    this.props.logIn(this.state.email, this.state.password);
-    console.log(this.props);
+    axios.post('http://localhost:4000/login', {
+      mail: this.state.email,
+      password: this.state.password,
+    }).then((user) => {
+      this.props.logInSuccess(user.data);
+    });
   }
 
   handleChangeInput = (e) => {
     this.setState({
       [e.target.name]: e.target.value 
-    })
+    });
   }
 
   render() {
@@ -41,7 +46,7 @@ class NewTutorPage extends Component {
           <form className="form">
             <TextField
               name="email"
-              className="input-field"
+              className={`input-field ${ this.state.emailError ? 'input-error' : '' }`}
               label="Email"
               type="text"
               margin="normal"

@@ -1,12 +1,10 @@
 const authReducer = (state = [], action) => {
-  console.log('action', action);
-  // console.log('state', state);
+  console.log('call from reducer: ', action);
   switch (action.type) {
     case 'LOGIN_SUCCESS':
       return {
-        state,
-        email: action.email,
-        password: action.password
+        ...state,
+        userData: action.type.userData
       }
     default:
       return state;

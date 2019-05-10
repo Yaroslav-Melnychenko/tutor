@@ -12,6 +12,7 @@
     "node": "^11.14.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
+    "react-devtools": "^3.6.1",
     "react-dom": "^16.8.6",
     "react-icons": "^3.6.1",
     "react-redux": "^7.0.3",
@@ -20,6 +21,7 @@
     "react-scripts": "2.1.8",
     "react-stars": "^2.2.5",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "sass": "^1.19.0"
   },
@@ -37,5 +39,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }

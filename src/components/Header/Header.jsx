@@ -15,6 +15,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'react-router-dom';
+import './Header.scss';
 
 const styles = theme => ({
   root: {
@@ -123,6 +125,9 @@ class Header extends Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
+        <MenuItem onClick={this.handleMenuClose}>
+          <Link className="menu-text-link" to="/login">Login</Link>
+        </MenuItem>
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
       </Menu>
@@ -162,14 +167,14 @@ class Header extends Component {
     );
 
     return (
-      <div className={classes.root}>
+      <div className={`${classes.root} header`}>
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Material-UI
+              <Link className="logo-text" to="/">TuLancer</Link>
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
