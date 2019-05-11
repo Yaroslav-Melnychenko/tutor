@@ -4,6 +4,8 @@ import TutorPage from './components/TutorPage/TutorPage';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage';
+import RestorePage from './components/RestorePage';
+import RegistrationPage from './components/RegistrationPage';
 import { store } from './store/configureStore';
 import { Provider } from 'react-redux';
 import './App.scss';
@@ -20,6 +22,8 @@ class App extends Component {
           <Route exact path="/" component={AppContainer} />
           <Route exact path="/login" component={LoginPage} />
           <Route path="/tutor/:id" component={TutorPage} />
+          <Route path="/restore" component={RestorePage} />
+          <Route path="/registration" component={RegistrationPage} />
         </Provider>
       </Router>
     );

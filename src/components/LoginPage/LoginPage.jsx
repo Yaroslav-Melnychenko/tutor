@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { FaGoogle, FaFacebookF } from 'react-icons/fa';
 import Button from '@material-ui/core/Button';
-import axios from 'axios';
+// import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './LoginPage.scss';
 
 class NewTutorPage extends Component {
@@ -17,12 +18,12 @@ class NewTutorPage extends Component {
   }
 
   submitForm = () => {
-    axios.post('http://localhost:4000/login', {
-      mail: this.state.email,
-      password: this.state.password,
-    }).then((user) => {
-      this.props.logInSuccess(user.data);
-    });
+    // axios.post('http://localhost:4000/login', {
+    //   mail: this.state.email,
+    //   password: this.state.password,
+    // }).then((user) => {
+    //   this.props.logInSuccess(user.data);
+    // });
   }
 
   handleChangeInput = (e) => {
@@ -68,6 +69,9 @@ class NewTutorPage extends Component {
               <Button onClick={this.submitForm} variant="outlined" color="primary">Вхід</Button>
             </div>
           </form>
+          <p>
+            Забули пароль? <Link to="/restore">Відновити</Link> мій пароль
+          </p>
         </div>
       </div>
     )
