@@ -12,18 +12,19 @@ class NewTutorPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: props.userData.email,
+      mail: props.userData.mail,
       password: props.userData.password,
     }
   }
 
-  submitForm = () => {
-    // axios.post('http://localhost:4000/login', {
-    //   mail: this.state.email,
-    //   password: this.state.password,
-    // }).then((user) => {
-    //   this.props.logInSuccess(user.data);
-    // });
+  submitForm = (e) => {
+    this.setState({ errors: {} })
+    e.preventDefault();
+    this.props.logIn(this.state)
+      .then(
+        () => {},
+        (data) => this.setState({ errors: data }, () => console.log(this.state))
+      );
   }
 
   handleChangeInput = (e) => {
@@ -34,7 +35,7 @@ class NewTutorPage extends Component {
 
   render() {
 
-    const { email, password } = this.state;
+    const { mail, password } = this.state;
 
     return(
       <div className="login-container">
@@ -46,13 +47,13 @@ class NewTutorPage extends Component {
           </div>
           <form className="form">
             <TextField
-              name="email"
-              className={`input-field ${ this.state.emailError ? 'input-error' : '' }`}
+              name="mail"
+              className='input-field'
               label="Email"
               type="text"
               margin="normal"
               variant="outlined"
-              value={email}
+              value={mail}
               onChange={this.handleChangeInput}
             />
             <TextField
