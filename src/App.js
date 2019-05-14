@@ -8,13 +8,22 @@ import RestorePage from './components/RestorePage';
 import RegistrationPage from './components/RegistrationPage';
 import { store } from './store/configureStore';
 import { Provider } from 'react-redux';
+import setAuthorizationToken from './utils/setAuthorizationToken';
+import jwt from 'jsonwebtoken';
+import { setCurrentUser } from './store/login/actions';
 import './App.scss';
 
 require('dotenv').config();
 
+if(localStorage.jwtToken) {
+  setAuthorizationToken(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)._doc));
+}
+
 class App extends Component {
+
   render() {
-    // const { classes } = this.props;
+
     return (
       <Router>
         <Provider store={store}>
