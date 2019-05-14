@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import { userLoginRequest } from '../../store/login/actions';
 import LoginPage from './LoginPage';
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
   return {
-    userData: {mail: '', password: ''}
+    ...state.login
   };
 };
 

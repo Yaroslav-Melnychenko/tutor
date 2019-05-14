@@ -8,6 +8,11 @@ export const userLoginRequest = (userData) => {
           type: 'LOGIN_SUCCESS',
           userData: response.data
         });
+      }).catch( ({ response }) => {
+        dispatch({
+          type: 'LOGIN_FAILED',
+          loginErrors: response.data
+        })
       });
   }
 }

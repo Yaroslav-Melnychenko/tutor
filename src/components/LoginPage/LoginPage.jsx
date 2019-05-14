@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-// import { withFormik } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import { FaGoogle, FaFacebookF } from 'react-icons/fa';
 import Button from '@material-ui/core/Button';
-// import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { validateInput } from '../../assets/validators';
 import './LoginPage.scss';
 
 class NewTutorPage extends Component {
@@ -12,19 +11,45 @@ class NewTutorPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mail: props.userData.mail,
-      password: props.userData.password,
+      mail: '',
+      password: '',
+      loginError: {
+        mail: null,
+        password: null,
+        message: null
+      },
+      isLoading: false
     }
   }
 
+  isValid = () => {
+    const { errors, isValid } = validateInput(this.state);
+    if(!isValid) {
+      this.setState({ loginError: errors });
+    }
+    return isValid;
+  }
+
   submitForm = (e) => {
-    this.setState({ errors: {} })
-    e.preventDefault();
-    this.props.logIn(this.state)
-      .then(
-        () => {},
-        (data) => this.setState({ errors: data }, () => console.log(this.state))
+    if(this.isValid()) {
+      this.setState({ 
+        loginError: {
+          mail: null,
+          password: null,
+          message: null
+        },
+        isLoading: true
+      })
+      e.preventDefault();
+      this.props.logIn(this.state).then(
+        () => { 
+          this.setState({ 
+            loginError: this.props.loginError,
+            isLoading: false
+          })
+        }
       );
+    }
   }
 
   handleChangeInput = (e) => {
@@ -35,7 +60,7 @@ class NewTutorPage extends Component {
 
   render() {
 
-    const { mail, password } = this.state;
+    const { mail, password, loginError } = this.state;
 
     return(
       <div className="login-container">
@@ -47,8 +72,9 @@ class NewTutorPage extends Component {
           </div>
           <form className="form">
             <TextField
+              error={loginError.mail || loginError.message ? true : false}
               name="mail"
-              className='input-field'
+              className="input-field"
               label="Email"
               type="text"
               margin="normal"
@@ -56,9 +82,11 @@ class NewTutorPage extends Component {
               value={mail}
               onChange={this.handleChangeInput}
             />
+            { loginError.mail ? <p className="erroe-message">{ loginError.mail }</p> : null }
             <TextField
+              error={loginError.password || loginError.message ? true : false}
               name="password"
-              className="input-field"
+              className='input-field'
               label="Пароль"
               type="password"
               margin="normal"
@@ -66,8 +94,10 @@ class NewTutorPage extends Component {
               value={password}
               onChange={this.handleChangeInput}
             />
+            { loginError.password ? <p className="erroe-message">{ loginError.password }</p> : null }
+            { loginError.message ? <p className="erroe-message">{ loginError.message }</p> : null }
             <div className="button-container">
-              <Button onClick={this.submitForm} variant="outlined" color="primary">Вхід</Button>
+              <Button onClick={this.submitForm} disabled={this.state.isLoading} variant="outlined" color="primary">Вхід</Button>
             </div>
           </form>
           <p>
