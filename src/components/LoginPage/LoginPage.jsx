@@ -46,7 +46,8 @@ class NewTutorPage extends Component {
           this.setState({ 
             loginError: this.props.loginError,
             isLoading: false
-          })
+          });
+          this.props.history.push('/');
         }
       );
     }
