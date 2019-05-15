@@ -48,7 +48,7 @@ class NewTutorPage extends Component {
             isLoading: false
           });
           if(!this.state.loginError.message) {
-            this.props.history.push('/');
+            this.props.history.push('/profile');
           }
         }
       );

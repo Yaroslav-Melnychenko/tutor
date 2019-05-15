@@ -15,13 +15,13 @@ class Header extends Component {
 
   logOut =() => {
     this.props.logOut();
+    this.props.history.push('/');
   }
 
   render() {
 
     const { classes } = this.props;
     const { tutorInfo: { login: { userData } } } = this.props;
-    console.log(this.props);
 
     const userLinks = (
       <div className="navbar-links">
@@ -36,7 +36,7 @@ class Header extends Component {
             className={classes.chip}
           />
         ) : null }</span>
-        <Link to="profile" className="my-btn"><FaUserCog className="my-icon" /> Мій профіль</Link>
+        <Link to="/profile" className="my-btn"><FaUserCog className="my-icon" /> Мій профіль</Link>
         <div onClick={this.logOut} className="my-btn">Вийти</div>
       </div>
     )

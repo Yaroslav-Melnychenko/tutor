@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './store/login/actions';
+import EditProfilePage from './components/EditProfilePage';
 import './App.scss';
 
 require('dotenv').config();
@@ -33,6 +34,7 @@ class App extends Component {
           <Route path="/tutor/:id" component={TutorPage} />
           <Route path="/restore" component={RestorePage} />
           <Route path="/registration" component={RegistrationPage} />
+          <Route path="/profile" component={EditProfilePage} />
         </Provider>
       </Router>
     );
