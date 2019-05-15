@@ -20,6 +20,8 @@ const TutorPage = (props) => {
       });
   }, []);
 
+  console.log(props);
+
   return(
     <div className="page-container">
         {tutor ? (

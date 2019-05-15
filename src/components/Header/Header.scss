@@ -1,0 +1,46 @@
+.header {
+  position: relative;
+  z-index: 2;
+}
+
+.logo-text {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.menu-text-link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+  display: block;
+}
+
+.navbar-links {
+  display: flex;
+  margin-left: auto;
+}
+
+.my-btn {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 15px;
+  padding: 4px 8px;
+  border: solid 2px #5c6bc0;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 20px;
+  transition: 0.2;
+}
+
+.my-btn:hover{
+  opacity: 0.8;
+  transition: 0.3;
+}
+
+.my-icon {
+  width: 19px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 3px;
+}

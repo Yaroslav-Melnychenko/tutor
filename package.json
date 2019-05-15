@@ -7,17 +7,25 @@
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "dotenv": "^7.0.0",
+    "formik": "^1.5.4",
     "google-maps-react": "^2.0.2",
+    "jsonwebtoken": "^8.5.1",
     "node": "^11.14.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
+    "react-devtools": "^3.6.1",
     "react-dom": "^16.8.6",
     "react-icons": "^3.6.1",
+    "react-redux": "^7.0.3",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "react-stars": "^2.2.5",
-    "sass": "^1.19.0"
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.19.0",
+    "validator": "^10.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +41,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }
