@@ -1,5 +1,5 @@
 const authReducer = (state = [], action) => {
-  console.log('call from reducer: ', action);
+  // console.log('call from reducer: ', action);
   switch (action.type) {
     case 'LOGIN_SUCCESS':
       return {
@@ -9,14 +9,17 @@ const authReducer = (state = [], action) => {
           password: null,
           message: null
         },
-        // actionType: action.type.userData
         userData: action.userData
       }
     case 'LOGIN_FAILED':
       return {
         ...state,
-        // actionType: action.type,
         loginError: action.loginErrors
+      }
+    case 'LOGOUT_SUCCESS': 
+      return {
+        ...state,
+        userData: action.userData
       }
     default:
       return state;

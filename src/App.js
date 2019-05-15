@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AppContainer from './components/AppContainer/AppContainer';
 import TutorPage from './components/TutorPage/TutorPage';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Header from './components/Header/Header';
+import Header from './components/Header';
 import LoginPage from './components/LoginPage';
 import RestorePage from './components/RestorePage';
 import RegistrationPage from './components/RegistrationPage';

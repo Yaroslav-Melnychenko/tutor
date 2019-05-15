@@ -20,11 +20,6 @@ export const userLoginRequest = (userData) => {
 
         dispatch(setCurrentUser(jwt.decode(token)._doc))
 
-        // dispatch({
-        //   type: 'LOGIN_SUCCESS',
-        //   userData: jwt.decode(token)._doc
-        // });
-
       }).catch( ({ response }) => {
 
         dispatch({
@@ -33,5 +28,16 @@ export const userLoginRequest = (userData) => {
         })
 
       });
+  }
+}
+
+export const logOutAction = () => {
+  return dispatch => {
+    localStorage.removeItem('jwtToken');
+    setAuthorizationToken(false);
+    dispatch({
+      type: 'LOGOUT_SUCCESS',
+      userData: null
+    });
   }
 }

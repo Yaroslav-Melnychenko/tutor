@@ -47,7 +47,9 @@ class NewTutorPage extends Component {
             loginError: this.props.loginError,
             isLoading: false
           });
-          this.props.history.push('/');
+          if(!this.state.loginError.message) {
+            this.props.history.push('/');
+          }
         }
       );
     }
