@@ -108,6 +108,16 @@ class EditProfilePage extends Component {
                 options={this.languageOptions}
               />
             </div>
+            <div className="input-field-full">
+              <label className="label">Інформація про себе</label>
+              <TextField
+                placeholder="Коротко охарактирезуйте себе, свої здібності..."
+                variant="outlined"
+                multiline={true}
+                rows={3}
+                className="textarea"
+              />
+            </div>
           </div>
         </div>
       </div>
