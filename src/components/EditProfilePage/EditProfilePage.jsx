@@ -18,7 +18,7 @@ class EditProfilePage extends Component {
               margin="normal"
               variant="outlined"
               // disabled={true}
-              className="input-field-half"
+              className="input-field-part"
             />
             <TextField
               label="Фамілія"
@@ -26,7 +26,7 @@ class EditProfilePage extends Component {
               margin="normal"
               variant="outlined"
               // disabled={true}
-              className="input-field-half"
+              className="input-field-part"
             />
           </div>
         </div>
