@@ -8,13 +8,27 @@ class EditProfilePage extends Component {
       <div className="container">
         <h3>Редагувати профіль</h3>
         <div className="inputs-container">
-        <TextField
-          label="Ваше ім'я"
-          defaultValue="Олескандр"
-          margin="normal"
-          variant="outlined"
-          disabled={true}
-        />
+          <div className="photo">
+            <img src="https://picsum.photos/250" alt="" />
+          </div>
+          <div className="inputs">
+            <TextField
+              label="Ім'я"
+              defaultValue="Олескандр"
+              margin="normal"
+              variant="outlined"
+              // disabled={true}
+              className="input-field-half"
+            />
+            <TextField
+              label="Фамілія"
+              defaultValue="Громов"
+              margin="normal"
+              variant="outlined"
+              // disabled={true}
+              className="input-field-half"
+            />
+          </div>
         </div>
       </div>
     )

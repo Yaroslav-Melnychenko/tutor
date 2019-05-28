@@ -2,7 +2,32 @@
   background-color: #fff;
   max-width: 1180px;
   margin: 35px auto;
-  padding: 35px 25px;
+  padding: 35px 45px;
   border-radius: 15px;
   box-shadow: 0 5px 9px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.inputs-container {
+  display: flex;
+  margin-top: 35px;
+  .photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 45px;
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+  .inputs {
+    // width: 75%;
+  }
+}
+
+.input-field-part {
+  width: 50%;
 }
