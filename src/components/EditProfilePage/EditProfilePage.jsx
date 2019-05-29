@@ -3,9 +3,14 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import { Editor, EditorState, RichUtils } from 'draft-js';
 import './EditProfilePage.scss';
 
 class EditProfilePage extends Component {
+
+  state = {
+    editorState: EditorState.createEmpty()
+  }
 
   languageOptions = [
     { value: 'Українська', label: 'Українська' },
@@ -55,14 +60,36 @@ class EditProfilePage extends Component {
 
   animatedComponents = makeAnimated();
 
+  onEditorChange = (editorState) => {
+    this.setState({editorState});
+  }
+
+  editorHandleKeyCommand(command, editorState) {
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+    if (newState) {
+      this.onChange(newState);
+      return 'handled';
+    }
+    return 'not-handled';
+  }
+
+  _onBoldClick = () => {
+    this.onEditorChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+  }
+
   render() {
+
+    const { userData: { firstName, lastName, languages, levels, photo, price, subjects, phone, description } } = this.props;
+
+    console.log(this.props.userData);
+
     return(
       <div className="container">
         <h3>Редагувати профіль</h3>
         <div className="inputs-container">
           <div className="photo-container">
             <div className="photo">
-              <img src="https://picsum.photos/250" alt="" />
+              <img src={photo} alt="" />
             </div>
             <Button className="btn" variant="contained" color="primary">
               Редагувати фото
@@ -72,7 +99,7 @@ class EditProfilePage extends Component {
             <div className="halfs-container">
               <TextField
                 label="Ім'я"
-                defaultValue="Олескандр"
+                defaultValue={firstName}
                 margin="normal"
                 variant="outlined"
                 // disabled={true}
@@ -80,7 +107,7 @@ class EditProfilePage extends Component {
               />
               <TextField
                 label="Фамілія"
-                defaultValue="Громов"
+                defaultValue={lastName}
                 margin="normal"
                 variant="outlined"
                 // disabled={true}
@@ -90,7 +117,7 @@ class EditProfilePage extends Component {
             <div className="thirds-container">
               <TextField
                 label="Телефон"
-                defaultValue="+38 096 765 43 21"
+                defaultValue={phone}
                 margin="normal"
                 variant="outlined"
                 // disabled={true}
@@ -106,7 +133,7 @@ class EditProfilePage extends Component {
               />
               <TextField
                 label="Ціна за 1 годину заняття (грн)"
-                defaultValue="300"
+                defaultValue={price}
                 margin="normal"
                 variant="outlined"
                 // disabled={true}
@@ -120,6 +147,7 @@ class EditProfilePage extends Component {
                 components={this.animatedComponents}
                 isMulti
                 options={this.levelOptions}
+                defaultValue={levels.map(level => ({ value: level, label: level}) )}
               />
             </div>
             <div className="input-field-full">
@@ -129,6 +157,7 @@ class EditProfilePage extends Component {
                 components={this.animatedComponents}
                 isMulti
                 options={this.subjectOptions}
+                defaultValue={subjects.map(subject => ({ value: subject, label: subject}) )}
               />
             </div>
             <div className="input-field-full">
@@ -138,16 +167,17 @@ class EditProfilePage extends Component {
                 components={this.animatedComponents}
                 isMulti
                 options={this.languageOptions}
+                defaultValue={languages.map(language => ({ value: language, label: language}) )}
               />
             </div>
             <div className="input-field-full">
               <label className="label">Інформація про себе</label>
-              <TextField
-                placeholder="Коротко охарактирезуйте себе, свої здібності..."
-                variant="outlined"
-                multiline={true}
-                rows={10}
-                className="textarea"
+              <button onClick={this._onBoldClick}>Bold</button>
+              <Editor 
+                editorState={this.state.editorState} 
+                onChange={this.onEditorChange} 
+                handleKeyCommand={this.editorHandleKeyCommand}
+                placeholder="Здесь можно печатать..."
               />
             </div>
             <Button className="edit-btn" variant="outlined" color="primary">
