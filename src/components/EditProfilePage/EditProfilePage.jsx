@@ -41,6 +41,18 @@ class EditProfilePage extends Component {
     { value: 'Програма університету', label: 'Програма університету' }
   ]
 
+  priceOptions = [
+    { value: 'За домовленістю', label: 'За домовленістю' },
+    { value: '50', label: '50' },
+    { value: '100', label: '100' },
+    { value: '150', label: '150' },
+    { value: '200', label: '200' },
+    { value: '250', label: '250' },
+    { value: '300', label: '300' },
+    { value: '350', label: '350' },
+    { value: '400', label: '400' }
+  ]
+
   animatedComponents = makeAnimated();
 
   render() {
@@ -57,30 +69,50 @@ class EditProfilePage extends Component {
             </Button>
           </div>
           <div className="inputs">
-            <TextField
-              label="Ім'я"
-              defaultValue="Олескандр"
-              margin="normal"
-              variant="outlined"
-              // disabled={true}
-              className="input-field-part"
-            />
-            <TextField
-              label="Фамілія"
-              defaultValue="Громов"
-              margin="normal"
-              variant="outlined"
-              // disabled={true}
-              className="input-field-part"
-            />
-            <TextField
-              label="Телефон"
-              defaultValue="+38 096 765 43 21"
-              margin="normal"
-              variant="outlined"
-              // disabled={true}
-              className="input-field-part"
-            />
+            <div className="halfs-container">
+              <TextField
+                label="Ім'я"
+                defaultValue="Олескандр"
+                margin="normal"
+                variant="outlined"
+                // disabled={true}
+                className="input-field-half"
+              />
+              <TextField
+                label="Фамілія"
+                defaultValue="Громов"
+                margin="normal"
+                variant="outlined"
+                // disabled={true}
+                className="input-field-half"
+              />
+            </div>
+            <div className="thirds-container">
+              <TextField
+                label="Телефон"
+                defaultValue="+38 096 765 43 21"
+                margin="normal"
+                variant="outlined"
+                // disabled={true}
+                className="input-field-part"
+              />
+              <TextField
+                label="Місто"
+                defaultValue="Київ"
+                margin="normal"
+                variant="outlined"
+                // disabled={true}
+                className="input-field-part"
+              />
+              <TextField
+                label="Ціна за 1 годину заняття (грн)"
+                defaultValue="300"
+                margin="normal"
+                variant="outlined"
+                // disabled={true}
+                className="input-field-part"
+              />
+            </div>
             <div className="input-field-full">
               <label className="label">З якими класами займаюсь?</label>
               <Select
@@ -114,10 +146,13 @@ class EditProfilePage extends Component {
                 placeholder="Коротко охарактирезуйте себе, свої здібності..."
                 variant="outlined"
                 multiline={true}
-                rows={3}
+                rows={10}
                 className="textarea"
               />
             </div>
+            <Button className="edit-btn" variant="outlined" color="primary">
+              Оновити данні
+            </Button>
           </div>
         </div>
       </div>

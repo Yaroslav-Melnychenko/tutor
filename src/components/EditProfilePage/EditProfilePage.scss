@@ -32,7 +32,12 @@
 
 .input-field-part {
   width: 31%;
-  margin: 0 1% !important;
+  // margin: 0 1% !important;
+}
+
+.input-field-half {
+  width: 48%;
+  // margin: 0 1% !important;
 }
 
 .btn {
@@ -40,8 +45,8 @@
 }
 
 .input-field-full {
-  margin: 35px 1% 0 1% !important;
-  width: 97%;
+  margin-top: 35px;
+  width: 100%;
 }
 
 .label {
@@ -53,4 +58,20 @@
 
 .textarea {
   width: 100%;
+}
+
+.halfs-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thirds-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 27px;
+}
+
+.edit-btn {
+  margin-top: 25px !important;
+  float: right;
 }
