@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, EditorState } from 'draft-js';
 import './EditProfilePage.scss';
 
 class EditProfilePage extends Component {
@@ -11,6 +11,16 @@ class EditProfilePage extends Component {
   state = {
     editorState: EditorState.createEmpty()
   }
+
+  styles = {
+    editor: {
+      border: '1px solid #c4c4c4',
+      borderRadius: '4px',
+      minHeight: '200px',
+      padding: '15px 20px',
+      cursor: 'text'
+    }
+  };
 
   languageOptions = [
     { value: 'Українська', label: 'Українська' },
@@ -61,27 +71,18 @@ class EditProfilePage extends Component {
   animatedComponents = makeAnimated();
 
   onEditorChange = (editorState) => {
-    this.setState({editorState});
+    this.setState({ editorState });
   }
 
-  editorHandleKeyCommand(command, editorState) {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.onChange(newState);
-      return 'handled';
-    }
-    return 'not-handled';
-  }
-
-  _onBoldClick = () => {
-    this.onEditorChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+  sendRequest = () => {
+    console.log(this.state);
   }
 
   render() {
 
     const { userData: { firstName, lastName, languages, levels, photo, price, subjects, phone, description } } = this.props;
 
-    console.log(this.props.userData);
+    // console.log(this.props.userData);
 
     return(
       <div className="container">
@@ -172,15 +173,16 @@ class EditProfilePage extends Component {
             </div>
             <div className="input-field-full">
               <label className="label">Інформація про себе</label>
-              <button onClick={this._onBoldClick}>Bold</button>
-              <Editor 
-                editorState={this.state.editorState} 
-                onChange={this.onEditorChange} 
-                handleKeyCommand={this.editorHandleKeyCommand}
-                placeholder="Здесь можно печатать..."
-              />
+              <div style={this.styles.editor}>
+                <Editor 
+                  editorState={this.state.editorState} 
+                  onChange={this.onEditorChange} 
+                  handleKeyCommand={this.editorHandleKeyCommand}
+                  placeholder="Здесь можно печатать..."
+                />
+              </div>
             </div>
-            <Button className="edit-btn" variant="outlined" color="primary">
+            <Button onClick={this.sendRequest} className="edit-btn" variant="outlined" color="primary">
               Оновити данні
             </Button>
           </div>
