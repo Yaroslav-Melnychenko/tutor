@@ -3,8 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-// import { Editor, EditorState } from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import axios from 'axios';
+import { dataBaseUrl } from '../../api/constants';
 import './EditProfilePage.scss';
 
 class EditProfilePage extends Component {
@@ -67,7 +67,6 @@ class EditProfilePage extends Component {
     this.setState({ 
       [e.target.name] : e.target.value 
      })
-    // console.log(e);
   }
 
   onSelectChange = (options, optionName) => {
@@ -77,14 +76,18 @@ class EditProfilePage extends Component {
   }
 
   sendRequest = () => {
-    console.log(this.state);
+    const { userData: { _id }, updateUserStore } = this.props;
+    axios.put(dataBaseUrl + '/tutors/' + _id, this.state).then(responce => {
+      const { data } = responce;
+      updateUserStore(data);
+    })
   }
 
   render() {
 
     const { firstName, lastName, languages, levels, photo, price, subjects, phone } = this.state;
 
-    // console.log(this.props);
+    console.log(this.props);
 
     return(
       <div className="container">
