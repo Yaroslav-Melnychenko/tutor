@@ -3,24 +3,17 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { Editor, EditorState } from 'draft-js';
+// import { Editor, EditorState } from 'draft-js';
+import 'draft-js/dist/Draft.css';
 import './EditProfilePage.scss';
 
 class EditProfilePage extends Component {
 
-  state = {
-    editorState: EditorState.createEmpty()
+  constructor(props) {
+    super(props);
+    const { userData: { firstName, lastName, languages, levels, photo, price, subjects, phone, description, place } } = props;
+    this.state = { firstName, lastName, phone, place, price, levels, subjects, languages, description, photo };
   }
-
-  styles = {
-    editor: {
-      border: '1px solid #c4c4c4',
-      borderRadius: '4px',
-      minHeight: '200px',
-      padding: '15px 20px',
-      cursor: 'text'
-    }
-  };
 
   languageOptions = [
     { value: 'Українська', label: 'Українська' },
@@ -70,8 +63,17 @@ class EditProfilePage extends Component {
 
   animatedComponents = makeAnimated();
 
-  onEditorChange = (editorState) => {
-    this.setState({ editorState });
+  onInputChange = (e) => {
+    this.setState({ 
+      [e.target.name] : e.target.value 
+     })
+    // console.log(e);
+  }
+
+  onSelectChange = (options, optionName) => {
+    this.setState({ 
+      [optionName]: options ? options.map(option => option.value) : null 
+    });
   }
 
   sendRequest = () => {
@@ -80,9 +82,9 @@ class EditProfilePage extends Component {
 
   render() {
 
-    const { userData: { firstName, lastName, languages, levels, photo, price, subjects, phone, description } } = this.props;
+    const { firstName, lastName, languages, levels, photo, price, subjects, phone } = this.state;
 
-    // console.log(this.props.userData);
+    // console.log(this.props);
 
     return(
       <div className="container">
@@ -103,16 +105,18 @@ class EditProfilePage extends Component {
                 defaultValue={firstName}
                 margin="normal"
                 variant="outlined"
-                // disabled={true}
+                name="firstName"
                 className="input-field-half"
+                onChange={this.onInputChange}
               />
               <TextField
                 label="Фамілія"
                 defaultValue={lastName}
                 margin="normal"
                 variant="outlined"
-                // disabled={true}
+                name="lastName"
                 className="input-field-half"
+                onChange={this.onInputChange}
               />
             </div>
             <div className="thirds-container">
@@ -121,24 +125,27 @@ class EditProfilePage extends Component {
                 defaultValue={phone}
                 margin="normal"
                 variant="outlined"
-                // disabled={true}
+                name="phone"
                 className="input-field-part"
+                onChange={this.onInputChange}
               />
               <TextField
                 label="Місто"
                 defaultValue="Київ"
                 margin="normal"
                 variant="outlined"
-                // disabled={true}
+                name="place"
                 className="input-field-part"
+                onChange={this.onInputChange}
               />
               <TextField
                 label="Ціна за 1 годину заняття (грн)"
                 defaultValue={price}
                 margin="normal"
                 variant="outlined"
-                // disabled={true}
+                name="price"
                 className="input-field-part"
+                onChange={this.onInputChange}
               />
             </div>
             <div className="input-field-full">
@@ -148,7 +155,9 @@ class EditProfilePage extends Component {
                 components={this.animatedComponents}
                 isMulti
                 options={this.levelOptions}
-                defaultValue={levels.map(level => ({ value: level, label: level}) )}
+                defaultValue={ levels ? levels.map(level => ({ value: level, label: level}) ) : null }
+                name="levels"
+                onChange={(options) => this.onSelectChange(options, 'levels')}
               />
             </div>
             <div className="input-field-full">
@@ -158,7 +167,9 @@ class EditProfilePage extends Component {
                 components={this.animatedComponents}
                 isMulti
                 options={this.subjectOptions}
-                defaultValue={subjects.map(subject => ({ value: subject, label: subject}) )}
+                defaultValue={ subjects ? subjects.map(subject => ({ value: subject, label: subject}) ) : null }
+                name="subjects"
+                onChange={(options) => this.onSelectChange(options, 'subjects')}
               />
             </div>
             <div className="input-field-full">
@@ -168,19 +179,21 @@ class EditProfilePage extends Component {
                 components={this.animatedComponents}
                 isMulti
                 options={this.languageOptions}
-                defaultValue={languages.map(language => ({ value: language, label: language}) )}
+                defaultValue={ languages ? languages.map(language => ({ value: language, label: language}) ) : null }
+                name="languages"
+                onChange={(options) => this.onSelectChange(options, 'languages')}
               />
             </div>
             <div className="input-field-full">
               <label className="label">Інформація про себе</label>
-              <div style={this.styles.editor}>
-                <Editor 
-                  editorState={this.state.editorState} 
-                  onChange={this.onEditorChange} 
-                  handleKeyCommand={this.editorHandleKeyCommand}
-                  placeholder="Здесь можно печатать..."
-                />
-              </div>
+              <TextField
+                placeholder="Коротко охарактирезуйте себе, свої здібності..."
+                variant="outlined"
+                multiline={true}
+                rows={8}
+                className="textarea"
+                name="description"
+              />
             </div>
             <Button onClick={this.sendRequest} className="edit-btn" variant="outlined" color="primary">
               Оновити данні
