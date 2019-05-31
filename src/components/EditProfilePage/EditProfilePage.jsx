@@ -3,8 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import axios from 'axios';
-import { dataBaseUrl } from '../../api/constants';
 import './EditProfilePage.scss';
 
 class EditProfilePage extends Component {
@@ -13,6 +11,7 @@ class EditProfilePage extends Component {
     super(props);
     const { userData: { firstName, lastName, languages, levels, photo, price, subjects, phone, description, place } } = props;
     this.state = { firstName, lastName, phone, place, price, levels, subjects, languages, description, photo };
+    console.log(this.props);
   }
 
   languageOptions = [
@@ -77,10 +76,7 @@ class EditProfilePage extends Component {
 
   sendRequest = () => {
     const { userData: { _id }, updateUserStore } = this.props;
-    axios.put(dataBaseUrl + '/tutors/' + _id, this.state).then(responce => {
-      const { data } = responce;
-      updateUserStore(data);
-    })
+    updateUserStore(this.state, _id);
   }
 
   render() {

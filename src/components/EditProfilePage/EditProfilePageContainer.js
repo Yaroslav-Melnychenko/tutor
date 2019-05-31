@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import EditProfilePage from './EditProfilePage';
-import { updateUser } from '../../store/updateTutor/actions';
+import { updateUserRequest } from '../../store/updateTutor/actions';
 
 const mapStateToProps = ({ login }) => {
   const { userData } = login;
@@ -11,7 +11,7 @@ const mapStateToProps = ({ login }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUserStore: (userData) => { dispatch(updateUser(userData)) }
+    updateUserStore: (userData, id) => { dispatch(updateUserRequest(userData, id)) }
   }
 }
 
