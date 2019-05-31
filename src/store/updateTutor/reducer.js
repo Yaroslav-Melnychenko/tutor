@@ -1,4 +1,5 @@
 const updateTutor = (state = [], action) => {
+  // console.log(action.userData);
   switch (action.type) {
     case 'TUTOR_UPDATE': 
       return {

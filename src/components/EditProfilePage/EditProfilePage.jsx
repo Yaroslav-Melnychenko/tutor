@@ -7,12 +7,14 @@ import './EditProfilePage.scss';
 
 class EditProfilePage extends Component {
 
-  constructor(props) {
-    super(props);
-    const { userData: { firstName, lastName, languages, levels, photo, price, subjects, phone, description, place } } = props;
-    this.state = { firstName, lastName, phone, place, price, levels, subjects, languages, description, photo };
-    console.log(this.props);
-  }
+  state = { ...this.props.userData };
+
+  // constructor(props) {
+  //   super(props);
+  //   const { userData: { firstName, lastName, languages, levels, photo, price, subjects, phone, description, place } } = props;
+  //   this.state = { firstName, lastName, phone, place, price, levels, subjects, languages, description, photo };
+  //   // console.log(this.props);
+  // }
 
   languageOptions = [
     { value: 'Українська', label: 'Українська' },
@@ -83,7 +85,7 @@ class EditProfilePage extends Component {
 
     const { firstName, lastName, languages, levels, photo, price, subjects, phone } = this.state;
 
-    console.log(this.props);
+    // console.log(this.props);
 
     return(
       <div className="container">

@@ -22,9 +22,3 @@ export const updateUserRequest = (userData, id) => {
     })
   }
 }
-
-// export const updateUser = (tutor) => {
-//   return dispatch => {
-//     dispatch(updateCurrentUser(tutor));
-//   }
-// }

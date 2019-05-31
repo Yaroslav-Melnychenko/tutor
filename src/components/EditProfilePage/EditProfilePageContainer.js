@@ -4,6 +4,7 @@ import { updateUserRequest } from '../../store/updateTutor/actions';
 
 const mapStateToProps = ({ login }) => {
   const { userData } = login;
+  console.log(login)
   return {
     userData
   }
