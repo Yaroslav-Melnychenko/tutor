@@ -1,6 +1,7 @@
 import axios from 'axios';
 import setAuthorizationToken from '../../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
+import { dataBaseUrl } from '../../api/constants';
 
 export const setCurrentUser = (tutor) => {
   return {
@@ -11,7 +12,7 @@ export const setCurrentUser = (tutor) => {
 
 export const userLoginRequest = (userData) => {
   return dispatch => {
-    return axios.post('http://localhost:4000/login', userData)
+    return axios.post(dataBaseUrl + '/login', userData)
       .then(response => {
 
         const token = response.data.token;

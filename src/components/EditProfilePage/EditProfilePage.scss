@@ -1,0 +1,75 @@
+.container {
+  background-color: #fff;
+  max-width: 1180px;
+  margin: 35px auto;
+  padding: 35px 45px;
+  border-radius: 15px;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.inputs-container {
+  display: flex;
+  margin-top: 35px;
+  .photo {
+    min-width: 200px;
+    min-height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 25px;
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+  }
+  .inputs {
+    width: 100%;
+    margin-left: 40px;
+  }
+}
+
+.input-field-part {
+  width: 31%;
+}
+
+.input-field-half {
+  width: 48%;
+}
+
+.btn {
+  width: 100%;
+}
+
+.input-field-full {
+  margin-top: 35px;
+  width: 100%;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.halfs-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thirds-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 27px;
+}
+
+.edit-btn {
+  margin-top: 25px !important;
+  float: right;
+}
