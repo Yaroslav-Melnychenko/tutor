@@ -11,7 +11,7 @@
     "google-maps-react": "^2.0.2",
     "jsonwebtoken": "^8.5.1",
     "node": "^11.14.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-devtools": "^3.6.1",
     "react-dom": "^16.8.6",
